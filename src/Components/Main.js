@@ -3,56 +3,36 @@ import Title from './Title'
 import PhotoWall from './Photowall'
 import AddPhoto from './AddPhoto'
 import {Route} from 'react-router-dom'
+import {removePost} from '../redux/actions'
 
 
 class Main extends Component{
 
-    constructor(){
-        super()
-        this.state = {
-            posts: [{}]
-        }
-
-        this.removePhoto = this.removePhoto.bind(this);
-        // this.addPhoto = this.
-    }
-
-    removePhoto(postRemoved){
-        console.log(postRemoved.description);
-        this.setState((state) => ({
-            posts: state.posts.filter(post => post !== postRemoved)
-        }))
-    }
-
-    // componentDidMount(){
-    //     const data = fetchDatabase();
-    //     this.setState({
-    //         posts: data
-    //     })
+    // constructor(){
+    //     super()
     // }
 
-    addPhoto(postSubmitted){
-        this.setState(state => ({
-            posts: state.posts.concat([postSubmitted])
-        }))
+    componentDidMount(){
+        this.props.removePost(1)
     }
 
     render(){
-        console.log(this.state.posts)
+        console.log(this.props)
         return(
             <div>
                 <Route exact path="/" render={() => (
                     <div>
                         <Title title = {'PhotoWall'}/>
-                        <PhotoWall posts = {this.state.posts} onRemovePhoto={this.removePhoto}/>
+                        {/* <PhotoWall posts = {this.state.posts} onRemovePhoto={this.removePhoto}/> */}
+                        <PhotoWall {...this.props}/>
                     </div>
                 )}/>
-                <Route path="/AddPhoto" render={({history}) => (
+                {/* <Route path="/AddPhoto" render={({history}) => (
                     <AddPhoto onAddPhoto={(addedPost) => {
                         this.addPhoto(addedPost)
                         history.push('/')
                     }}/>
-                )}/>
+                )}/> */}
             </div>
         )
     }

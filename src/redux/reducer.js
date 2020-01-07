@@ -1,6 +1,7 @@
-import posts from '../data/posts'
+import postData from '../data/posts'
 
-const postReducer = function posts(state = posts, action){
+const postReducer = function posts(state = postData, action){
+    console.log(action.index)
     return state
 
 }
