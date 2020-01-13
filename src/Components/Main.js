@@ -7,6 +7,12 @@ import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
 class Main extends Component{
+
+    componentDidMount(){
+        this.props.startLoadingPosts()
+        this.props.pullComments()
+    }
+
     render(){
         return(
             <div>

@@ -12,7 +12,7 @@ class Single extends Component{
         return (
             <div className='single-photo'>
                 <Photo post={post} {...this.props} index={index}/>
-                <Comments addComment={this.props.addComment} commentList={commentList} postID={id}/>
+                <Comments saveComment={this.props.saveComment} commentList={commentList} postID={id}/>
             </div>
         )
     }
